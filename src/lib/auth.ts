@@ -6,7 +6,6 @@ import { NextRequest } from 'next/server'
 import { prisma } from './db'
 import { jwtVerify } from 'jose'
 import { SignJWT } from 'jose'
-import { User } from '@prisma/client'
 
 // Chave secreta para assinar tokens
 const jwtSecret = process.env.JWT_SECRET;
@@ -41,7 +40,7 @@ function readToken(source: NextRequest | ReadonlyRequestCookies): string | undef
 
 export async function verifyAuth(
   requestOrCookies: NextRequest | ReadonlyRequestCookies
-): Promise<User | null> {
+) {
   const token = readToken(requestOrCookies);
   if (!token) return null;
 
