@@ -2,7 +2,6 @@ import { Playfair_Display, Manrope } from "next/font/google";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 const display = Playfair_Display({
   subsets: ["latin"],
@@ -14,8 +13,6 @@ const body = Manrope({
 });
 
 export default function Home() {
-
-
   return (
     <div className={`${body.className} min-h-screen bg-[var(--sand)] text-[var(--ink)]`}>
       <div className="relative overflow-hidden">

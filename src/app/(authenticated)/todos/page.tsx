@@ -182,6 +182,7 @@ export default function TodosPage() {
         title={editingTodo ? "Editar tarefa" : "Nova tarefa"}
       >
         <TaskForm
+          key={editingTodo?.id ?? "new"}
           initialValues={
             editingTodo
               ? {

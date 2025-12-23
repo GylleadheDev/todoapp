@@ -30,6 +30,7 @@ export async function GET(request: NextRequest, { params }: Params) {
 
     return NextResponse.json(todo);
   } catch (error) {
+    console.error("Erro ao buscar tarefa:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
@@ -65,6 +66,7 @@ export async function PATCH(request: NextRequest, { params }: Params) {
 
     return NextResponse.json(updated);
   } catch (error) {
+    console.error("Erro ao atualizar tarefa:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
@@ -93,6 +95,7 @@ export async function DELETE(request: NextRequest, { params }: Params) {
 
     return NextResponse.json({ ok: true });
   } catch (error) {
+    console.error("Erro ao remover tarefa:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

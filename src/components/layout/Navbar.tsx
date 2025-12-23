@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Playfair_Display, Manrope } from "next/font/google";
-import { Flashlight, Menu, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { VscTasklist } from "react-icons/vsc";
 
 import { buttonStyles, Button } from "@/components/ui/Button";

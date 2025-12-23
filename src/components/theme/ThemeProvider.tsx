@@ -32,12 +32,7 @@ const resolveInitialTheme = (): Theme => {
 };
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme>("light");
-
-  useEffect(() => {
-    const initial = resolveInitialTheme();
-    setThemeState(initial);
-  }, []);
+  const [theme, setThemeState] = useState<Theme>(() => resolveInitialTheme());
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;

@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
             { status: 200 }
         )
 
-        response.cookies.delete('token', { path: '/' })
+        response.cookies.delete({ name: 'token', path: '/' })
 
         return response
     } catch (error) {

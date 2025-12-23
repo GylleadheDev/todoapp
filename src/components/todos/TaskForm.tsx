@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
@@ -29,11 +29,6 @@ export const TaskForm = ({
   const [description, setDescription] = useState(
     initialValues?.description ?? ""
   );
-
-  useEffect(() => {
-    setTitle(initialValues?.title ?? "");
-    setDescription(initialValues?.description ?? "");
-  }, [initialValues?.description, initialValues?.title]);
 
   return (
     <form

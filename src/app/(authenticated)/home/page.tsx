@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { showToast } from "nextjs-toast-notify";
-import { buttonStyles, Button } from "@/components/ui/Button";
+import { buttonStyles } from "@/components/ui/Button";
 import type { Todo } from "@/types/todo";
 
 export default function HomePage() {

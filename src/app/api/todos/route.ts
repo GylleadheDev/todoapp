@@ -17,6 +17,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(todos)
   } catch (error) {
+    console.error("Erro ao listar tarefas:", error);
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }
@@ -42,6 +43,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(todo, { status: 201 })
   } catch (error) {
+    console.error("Erro ao criar tarefa:", error);
     return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }
