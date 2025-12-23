@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TodoFlow
 
-## Getting Started
+Um app simples para quem ama produtividade. O TodoFlow ajuda voce a dar um check na sua organizacao com listas leves, fluxo direto e foco no essencial do dia.
 
-First, run the development server:
+## O que este projeto entrega
 
+- Landing page moderna e responsiva com identidade visual propria
+- Autenticacao com JWT e cookies HttpOnly
+- Painel autenticado com tarefas, filtros e estatisticas
+- Conta do usuario com dados basicos e preferencias
+- Tema claro/escuro com alternancia
+
+## Stack principal
+
+- Next.js (App Router)
+- React
+- Prisma + Neon (Postgres)
+- Tailwind CSS
+
+## Como rodar localmente
+
+1) Instale dependencias
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2) Configure variaveis de ambiente
+Crie um arquivo `.env` com:
+```
+DATABASE_URL=postgres://...
+JWT_SECRET=uma-chave-segura
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3) Rode o projeto
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abra `http://localhost:3000`.
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` inicia o servidor de desenvolvimento
+- `npm run build` gera a build de producao
+- `npm run start` inicia a build de producao
+- `npm run lint` executa o lint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura do projeto (resumo)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app` rotas e layouts (App Router)
+- `src/components` UI e componentes de pagina
+- `src/lib` utilitarios de auth e banco
+- `src/types` tipos compartilhados
 
-## Deploy on Vercel
+## Autenticacao (como funciona)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Login e cadastro criam um JWT
+- O token fica em cookie HttpOnly com `path=/`
+- Rotas autenticadas passam pelo `AuthGuard`
+- APIs protegidas validam o usuario via `verifyAuth`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Principais rotas
+
+- `/` landing page
+- `/auth/login` e `/auth/register` autenticacao
+- `/home` painel
+- `/todos` tarefas
+- `/account` conta do usuario
+
+## Tema e identidade visual
+
+O tema usa variaveis CSS no `src/app/globals.css` e um `ThemeProvider` para alternar claro/escuro.
+
+## API (resumo)
+
+- `POST /api/auth/login`
+- `POST /api/auth/register`
+- `POST /api/auth/logout`
+- `GET /api/auth/me`
+- `GET /api/todos`
+- `POST /api/todos`
+- `PATCH /api/todos/:id`
+- `DELETE /api/todos/:id`
+
+## Observacoes
+
+Se algo quebrar na autenticacao, verifique o `JWT_SECRET` e se o cookie do token esta com `path=/`.
