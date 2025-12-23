@@ -12,6 +12,27 @@ const body = Manrope({
   weight: ["400", "500", "600", "700"],
 });
 
+const planOptions: Array<[string, string, string, string[]]> = [
+  [
+    "Gratis",
+    "R$ 0",
+    "Para comecar agora",
+    ["Listas ilimitadas", "Check diario", "Lembretes basicos"],
+  ],
+  [
+    "Pro",
+    "R$ 19",
+    "Por mes",
+    ["Prioridades inteligentes", "Tags avancadas", "Suporte rapido"],
+  ],
+  [
+    "Equipe",
+    "R$ 59",
+    "Para times pequenos",
+    ["Compartilhamento", "Quadros simples", "Permissoes basicas"],
+  ],
+];
+
 export default function Home() {
   return (
     <div className={`${body.className} min-h-screen bg-[var(--sand)] text-[var(--ink)]`}>
@@ -317,26 +338,7 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {[
-            [
-              "Gratis",
-              "R$ 0",
-              "Para comecar agora",
-              ["Listas ilimitadas", "Check diario", "Lembretes basicos"],
-            ],
-            [
-              "Pro",
-              "R$ 19",
-              "Por mes",
-              ["Prioridades inteligentes", "Tags avancadas", "Suporte rapido"],
-            ],
-            [
-              "Equipe",
-              "R$ 59",
-              "Para times pequenos",
-              ["Compartilhamento", "Quadros simples", "Permissoes basicas"],
-            ],
-          ].map(([title, price, note, items], index) => (
+          {planOptions.map(([title, price, note, items], index) => (
             <div
               key={title}
               className={`rounded-[2rem] border ${
@@ -362,7 +364,7 @@ export default function Home() {
                 {note}
               </p>
               <ul className="mt-6 space-y-3 text-sm text-[var(--ink)]/70">
-                {(items as string[]).map((item) => (
+                {items.map((item) => (
                   <li key={item} className="flex items-center gap-3">
                     <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
                     {item}
